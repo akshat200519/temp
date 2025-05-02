@@ -1,3 +1,11 @@
+plugins {
+    id 'java'
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
 pipeline {
     agent any
 
