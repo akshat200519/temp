@@ -1,27 +1,15 @@
 pipeline {
     agent any
-
     stages {
         stage('Checkout') {
             steps {
                 checkout scm
             }
         }
-
-        stage('Build') {
+        stage('Build / Publish') {
             steps {
-                sh './gradlew clean build'
+                sh './gradlew publish'  // or './gradlew artifactoryDeploy'
             }
         }
-
-        stage('Publish Artifacts') {
-            steps {
-                sh './gradlew artifactoryPublish'
-            }
-        }
-    }
-
-    triggers {
-        githubPush()
     }
 }
