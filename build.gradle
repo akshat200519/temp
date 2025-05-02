@@ -1,0 +1,20 @@
+plugins {
+    id 'maven-publish'
+    id 'com.jfrog.artifactory' version '4.29.0'
+}
+
+
+
+artifactory {
+    contextUrl = 'https://your-artifactory-url'
+    publish {
+        repository {
+            repoKey = 'libs-release-local'
+            username = 'user'
+            password = 'pass'
+        }
+        defaults {
+            publications('mavenJava')
+        }
+    }
+}
